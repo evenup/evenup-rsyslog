@@ -18,7 +18,10 @@
 #
 # Copyright 2013 EvenUp.
 #
-class rsyslog {
+class rsyslog(
+  $rate_limit_interval  = 5,
+  $rate_limit_burst     = 200,
+) {
 
   class { 'rsyslog::install': }
   class { 'rsyslog::config': }

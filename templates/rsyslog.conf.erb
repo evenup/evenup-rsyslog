@@ -5,4 +5,9 @@ $ModLoad imklog   # provides kernel logging support (previously done by rklogd)
 #$ModLoad immark  # provides --MARK-- message capability
 
 $ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+
+$SystemLogUsePIDFromSystem on
+$SystemLogRateLimitInterval <%= scope.lookupvar('rsyslog::rate_limit_interval') %>
+$SystemLogRateLimitBurst <%= scope.lookupvar('rsyslog::rate_limit_burst') %>
+
 $IncludeConfig /etc/rsyslog.d/*.conf

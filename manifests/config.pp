@@ -20,7 +20,7 @@ class rsyslog::config {
     group   => 'root',
     mode    => '0444',
     notify  => Class['rsyslog::service'],
-    source  => 'puppet:///modules/rsyslog/rsyslog.conf',
+    content => template('rsyslog/rsyslog.conf.erb'),
   }
 
   file { '/etc/rsyslog.d':
